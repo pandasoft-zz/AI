@@ -69,7 +69,18 @@ BREAKING CHANGE: <description>   ← only if breaking
 
 ## User action
 
-Show the proposed commit message, then ask the user what to do with these options:
-- **Only message** – show message only, do nothing
-- **Commit** – run `git add -A && git commit -m "<message>"`
-- **Commit + push** – run `git add -A && git commit -m "<message>" && git push`
+Show the proposed commit message, then use the `AskUserQuestion` tool to ask:
+
+```
+question: "What do you want to do with this commit?"
+header: "Action"
+options:
+  - label: "Message only"
+    description: "Show commit message, do nothing"
+  - label: "Commit"
+    description: "Run git add -A && git commit"
+  - label: "Commit + push"
+    description: "Run git add -A && git commit && git push"
+```
+
+Then execute the chosen action.
