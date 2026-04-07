@@ -2,7 +2,7 @@
 name: code-reviewer
 description: Code review specialist. Use AFTER test-runner confirms all tests pass. Reviews code quality, security, and correctness using confidence scoring to filter false positives. Manages the review-fix loop (max 3 cycles). Reports result to orchestrator.
 model: sonnet
-tools: Read, Write, Edit, Glob, Grep
+tools: Read, Write, Edit, Glob, Grep, Bash
 maxTurns: 40
 skills:
   - language-policy
@@ -27,6 +27,11 @@ Line: 42
 Issue: Missing error handling — database call not wrapped in try/catch
 Severity: security / logic / quality
 ```
+
+#### For infrastructure changes (Dockerfile, docker-compose, Makefile, CI):
+- Run `docker compose config --quiet` to validate syntax
+- Run `docker build` for changed Dockerfiles to catch build errors
+- Check that image tags actually exist (`docker manifest inspect <image>:<tag>`)
 
 ### Step 3 — Score each finding (0–100)
 

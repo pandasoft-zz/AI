@@ -47,8 +47,20 @@ Pass each agent: issue context, branch name, specific sub-task.
 - test-runner handles its own fix loop (max 3 cycles)
 - If test-runner reports failure after 3 cycles → **stop, report to human in Czech**
 
+### Step 6.5 — Verify acceptance criteria
+- Re-read the issue's **Acceptance** section
+- For each criterion, verify it against the actual running code:
+  - If criterion is runtime-based (e.g. "service starts", "endpoint returns 200",
+    "health check passes"): **run it** via Bash
+  - If criterion is code-based (e.g. "function exists", "config key present"):
+    verify by reading the files
+- If any criterion fails: send the finding back to the developer agent (same
+  fix loop as test-runner, max 3 cycles)
+- **Do not proceed to code-reviewer until all acceptance criteria pass**
+- Report results in Czech before continuing
+
 ### Step 7 — Run code-reviewer
-- After tests pass
+- After tests pass and acceptance criteria verified
 - code-reviewer handles its own review loop (max 3 cycles)
 - If code-reviewer reports failure after 3 cycles → **stop, report to human in Czech**
 
