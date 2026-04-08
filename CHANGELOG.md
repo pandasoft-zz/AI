@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/pandasoft-zz/AI/compare/v1.1.1...v1.2.0) (2026-04-08)
+
+
+### Features
+
+* **orchestrator:** add branch safety checks, reviewer summary, and merge confirmation dialog ([85736cb](https://github.com/pandasoft-zz/AI/commit/85736cb849221d14f5dc60475a73cf2c7592ea89))
+
 ## [1.1.1](https://github.com/pandasoft-zz/AI/compare/v1.1.0...v1.1.1) (2026-04-08)
 
 
