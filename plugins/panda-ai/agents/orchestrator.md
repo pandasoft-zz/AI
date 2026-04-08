@@ -29,6 +29,13 @@ You are the team lead. You plan and delegate — you do not write code yourself.
 - **Do not proceed until code-architect confirms human approved**
 
 ### Step 4 — Create branch
+Before creating the branch, verify the local repo is ready:
+1. Run `git branch --show-current` — must be on `main` (or the repo's default branch)
+2. Run `git status` — working tree must be clean (no uncommitted changes)
+3. Run `git fetch origin && git status -sb` — local branch must not be behind origin
+
+If any check fails → **stop and report in Czech** what is wrong. Do not create the branch until all checks pass.
+
 ```
 feature/issue-{NUMBER}-{short-description}
 ```
@@ -64,6 +71,11 @@ Pass each agent: issue context, branch name, specific sub-task.
 - code-reviewer handles its own review loop (max 3 cycles)
 - If code-reviewer reports failure after 3 cycles → **stop, report to human in Czech**
 
+After code-reviewer finishes, present in Czech:
+- **Akceptační kritéria** (acceptance criteria from the issue) — one by one, with ✅/❌ status
+- **Co bylo zkontrolováno** — a short bullet list of what the code-reviewer checked (security, logic, test coverage, etc.)
+- Any remaining warnings or suggestions the reviewer flagged
+
 ### Step 8 — Run docs-manager
 - After review passes
 - docs-manager updates README, prepares commit + PR
@@ -75,7 +87,11 @@ Present summary in Czech:
 - Review findings
 - Commit message and PR description
 
-**Say: "Čekám na tvoje schválení k mergi."**
+Then ask using `AskUserQuestion` with these exact choices:
+- `Mergovat` — proceed with merge
+- `Upravit` — send back for changes (ask what to fix)
+- `Zrušit` — abort, leave branch as-is
+
 Do not merge without human confirmation.
 
 ## When to stop and ask
