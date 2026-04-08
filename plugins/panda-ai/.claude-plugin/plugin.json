@@ -9,10 +9,23 @@
   },
   "repository": "https://github.com/pandasoft-zz/AI",
   "homepage": "https://github.com/pandasoft-zz/AI#readme",
-  "keywords": ["workflow", "multi-agent", "orchestrator", "testing", "code-review", "czech"],
+  "keywords": [
+    "workflow",
+    "multi-agent",
+    "orchestrator",
+    "testing",
+    "code-review",
+    "czech"
+  ],
   "components": {
-    "agents": ["agents/"],
-    "commands": ["commands/"],
-    "skills": ["skills/"]
+    "agents": [
+      "agents/"
+    ],
+    "commands": [
+      "commands/"
+    ],
+    "skills": [
+      "skills/"
+    ]
   }
 }
