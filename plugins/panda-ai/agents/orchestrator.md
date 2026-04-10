@@ -61,8 +61,10 @@ Pass each agent: issue context, branch name, specific sub-task.
     "health check passes"): **run it** via Bash
   - If criterion is code-based (e.g. "function exists", "config key present"):
     verify by reading the files
-- If any criterion fails: send the finding back to the developer agent (same
-  fix loop as test-runner, max 3 cycles)
+- If any criterion fails:
+  1. Send the finding back to the developer agent to fix (max 3 cycles)
+  2. After each fix, **re-run test-runner** before re-checking the criterion
+  3. Only proceed once both tests pass and the criterion is satisfied
 - **Do not proceed to code-reviewer until all acceptance criteria pass**
 - Report results in Czech before continuing
 
@@ -79,6 +81,18 @@ After code-reviewer finishes, present in Czech:
 ### Step 8 — Run docs-manager
 - After review passes
 - docs-manager updates README, prepares commit + PR
+
+### Step 8.5 — Verify CI
+After docs-manager pushes the branch and creates the PR:
+1. Get the PR number from the URL docs-manager returned
+2. Run `gh pr checks <PR-number> --watch` and wait for all checks to complete
+3. If any check fails:
+   - Inspect the failure log (`gh run view <run-id> --log-failed`)
+   - Spawn the relevant developer agent to fix the issue
+   - **Re-run test-runner** after every fix before pushing
+   - Push the fix and run `gh pr checks <PR-number> --watch` again
+   - Repeat until all checks are green (max 3 fix cycles; if still failing → stop and report in Czech)
+4. Share the PR URL with the human **only after all CI checks are green**
 
 ### Step 9 — Final approval and WAIT
 Present summary in Czech:
