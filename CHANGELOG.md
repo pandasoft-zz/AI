@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/pandasoft-zz/AI/compare/v1.2.0...v1.3.0) (2026-04-10)
+
+
+### Features
+
+* **orchestrator:** add CI verification step and enforce test-runner after every fix ([066a5b6](https://github.com/pandasoft-zz/AI/commit/066a5b6370a98014e8c30b02027045a3c9192475))
+
 # [1.2.0](https://github.com/pandasoft-zz/AI/compare/v1.1.1...v1.2.0) (2026-04-08)
 
 
