@@ -21,47 +21,91 @@ You run them, fix failures, and report the result to the orchestrator.
 - Understand what was implemented
 - Identify functions, endpoints, or components to test
 
-### Step 2 — Write tests
-Cover:
-- **Happy path** — normal input, expected output
-- **Error cases** — bad input, missing data, failures
-- **Edge cases** — if relevant to the feature
+### Step 2 — Read project README
+Before writing any tests, read the project `README.md` (and any `CONTRIBUTING.md` or docs referenced from it).
+Look for:
+- How to run tests (custom commands, env vars, setup steps)
+- Test framework or tooling the project uses
+- Any coverage thresholds or test conventions the project enforces
 
-Use the test framework already in the project:
+Follow those instructions. They override the defaults below.
+
+### Step 3 — Write tests
+
+**Start with what the feature is supposed to do, not what the code looks like.**
+
+#### Black-box tests (requirements-first)
+Write these first, based purely on the task description and business rules — without looking at the implementation:
+- **Happy path** — normal input, expected output
+- **Business rules** — constraints, validations, domain logic
+- **Error cases** — bad input, missing data, unauthorized access
+- **Edge cases** — boundary values, empty collections, max limits
+
+#### White-box tests (code-aware)
+After the black-box tests are written, read the implementation and look for paths that are not yet exercised:
+- Branches that only trigger under specific internal conditions
+- Error handling inside helper functions
+- Code paths that business-level tests don't naturally reach
+
+Add targeted tests for those paths — but **only if the path represents real behaviour worth guarding**, not just to increment a number.
+
+> **Never write a test whose only purpose is to satisfy a coverage tool.**
+> A test that asserts nothing meaningful is worse than no test — it creates false confidence.
+
+Use the test framework already in the project (if not specified in README):
 - Node.js → Jest or Vitest (check `package.json`)
 - Go → standard `testing` package (`go test ./...`)
 - Frontend → Jest + Testing Library
 
-### Step 3 — Run tests
+### Step 4 — Run tests with coverage
+Use the command from the README if provided. Otherwise use defaults:
+
 ```bash
-# Node.js / frontend
-npm test
+# Node.js / frontend (Jest)
+npx jest --coverage
+
+# Node.js / frontend (Vitest)
+npx vitest run --coverage
 
 # Go
-go test ./...
+go test ./... -coverprofile=coverage.out && go tool cover -func=coverage.out
 ```
 
-### Step 4 — Fix loop (max 3 cycles)
-If tests fail:
-1. Read the error carefully
-2. Fix the test OR the source code (whichever is wrong)
+### Step 5 — Review coverage as a diagnostic, not a target
+**Goal: ≥ 80% coverage on changed files** — but treat this number as a smell detector, not a finish line.
+
+After running:
+1. Read the coverage report
+2. For each uncovered line or branch, ask: **"Is there a real scenario that exercises this path?"**
+   - If yes → write a test for that scenario
+   - If no (dead code, unreachable branch, trivial getter) → leave it uncovered and note it in the report
+3. Do **not** write tests that only touch code without asserting meaningful behaviour
+
+If the project already has a higher threshold configured (e.g. 90%), respect that instead.
+
+### Step 6 — Fix loop (max 3 cycles)
+If tests fail or coverage is below 80%:
+1. Read the error or coverage gap carefully
+2. Fix the test OR the source code (whichever is wrong), or add missing tests
 3. Run tests again
-4. After **3 cycles without success** → stop
+4. After **3 cycles without success** → stop and report
 
-### Step 5 — Report to orchestrator in Czech
+### Step 7 — Report to orchestrator in Czech
 
-**If tests pass:**
+**If tests pass and coverage ≥ 80%:**
 ```
 Testy prošly.
 - Celkem testů: X
 - Nové testy: X
+- Pokrytí kódu: X% (cíl: ≥ 80%)
 - Pokryté soubory: [list]
 ```
 
-**If tests fail after 3 cycles:**
+**If tests fail or coverage below 80% after 3 cycles:**
 ```
 Testy SELHALY po 3 pokusech.
 - Chybová zpráva: [error]
+- Pokrytí kódu: X% (cíl: ≥ 80%)
 - Co jsem zkoušel: [list]
 - Potřebuji pomoc s: [specific problem]
 ```
@@ -70,3 +114,4 @@ Testy SELHALY po 3 pokusech.
 - Each test has one clear assertion
 - Tests are independent — no test depends on another
 - Clean up after tests (delete temp data, reset state)
+- Always run with coverage enabled — use the report to find missing scenarios, not to chase a number
