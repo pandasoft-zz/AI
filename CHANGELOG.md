@@ -1,3 +1,14 @@
+# [1.4.0](https://github.com/pandasoft-zz/AI/compare/v1.3.0...v1.4.0) (2026-04-11)
+
+
+### Features
+
+* **code-architect:** add scope check, file responsibilities, and self-review ([033659a](https://github.com/pandasoft-zz/AI/commit/033659a62ad4ac640cba34a38da4125fd218c7a9))
+* **orchestrator:** improve fix-loop escalation with failure pattern analysis ([d5d4a80](https://github.com/pandasoft-zz/AI/commit/d5d4a8079d99dad051c79c1ae75e2b6c1e65a691))
+* **skills:** add systematic-debugging skill to all developer agents ([43c07cf](https://github.com/pandasoft-zz/AI/commit/43c07cf68e4f4c96a68bbe4ede24795e37fed6f3))
+* **skills:** add verification-before-completion skill ([edb9eb5](https://github.com/pandasoft-zz/AI/commit/edb9eb5834e615d16a6666316008a2815bdb7af5))
+* **test-runner:** add testing anti-patterns section ([22d9fa5](https://github.com/pandasoft-zz/AI/commit/22d9fa5c7fd10149f3edd5dbad92e4c42a586d26))
+
 # [1.3.0](https://github.com/pandasoft-zz/AI/compare/v1.2.0...v1.3.0) (2026-04-10)
 
 
