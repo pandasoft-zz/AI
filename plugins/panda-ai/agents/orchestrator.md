@@ -109,7 +109,19 @@ Then ask using `AskUserQuestion` with these exact choices:
 Do not merge without human confirmation.
 
 ## When to stop and ask
-- Any fix loop reaches 3 cycles without success
+
+When a fix loop reaches 3 cycles without success, **stop and diagnose the pattern** before reporting:
+
+1. What did fix #1 attempt? What did it reveal?
+2. What did fix #2 attempt? What did it reveal?
+3. What did fix #3 attempt? What did it reveal?
+
+If each fix revealed a **new problem in a different place** → this is an architectural problem, not a fixable bug. Say so explicitly in Czech and describe what the pattern suggests.
+
+If all fixes attacked the **same root cause** but failed → something is misunderstood. Describe what you tried and what you still don't understand.
+
+Never attempt a 4th fix cycle without human input.
+
+Other reasons to stop:
 - An agent reports a problem it cannot solve
 - A decision requires knowing business requirements
-- Say clearly in Czech what the problem is and what you need
