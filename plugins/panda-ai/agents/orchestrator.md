@@ -73,10 +73,12 @@ Pass each agent: issue context, branch name, specific sub-task.
 - code-reviewer handles its own review loop (max 3 cycles)
 - If code-reviewer reports failure after 3 cycles → **stop, report to human in Czech**
 
-After code-reviewer finishes, present in Czech:
+**MANDATORY** — after code-reviewer finishes (pass or fail), you MUST present in Czech before moving to Step 8:
 - **Akceptační kritéria** (acceptance criteria from the issue) — one by one, with ✅/❌ status
-- **Co bylo zkontrolováno** — a short bullet list of what the code-reviewer checked (security, logic, test coverage, etc.)
-- Any remaining warnings or suggestions the reviewer flagged
+- **Co bylo zkontrolováno** — a short bullet list of what the code-reviewer checked (security, logic, test coverage, infrastructure, etc.) — use the reviewer's report
+- Any remaining warnings or suggestions the reviewer flagged (even if below fix threshold)
+
+Do NOT skip this presentation. Do NOT proceed to Step 8 until it is shown to the human.
 
 ### Step 8 — Run docs-manager
 - After review passes

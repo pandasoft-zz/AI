@@ -60,13 +60,16 @@ For remaining issues (score ≥ 75):
 ```
 Code review prošel.
 - Zkontrolováno souborů: X
+- Zkontrolované kategorie: [security, logika, kvalita kódu, test coverage, infrastruktura — uveď jen ty, které jsi skutečně zkontroloval]
 - Nalezené problémy: X celkem, Y odfiltrováno (skóre < 75), Z opraveno
+- Suggestions (skóre 50, neopraveno): [list each briefly, or "žádné"]
 - Kód je připraven k mergi
 ```
 
 **If review fails after 3 cycles:**
 ```
 Code review SELHAL po 3 pokusech.
+- Zkontrolované kategorie: [list]
 - Zbývající problémy (skóre ≥ 75):
   [list each with file, line, issue, score]
 - Co jsem zkoušel: [list]
