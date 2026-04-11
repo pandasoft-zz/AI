@@ -6,6 +6,7 @@ tools: Read, Write, Edit, Bash, Glob, Grep
 maxTurns: 50
 skills:
   - language-policy
+  - verification-before-completion
 ---
 
 # Test Runner
