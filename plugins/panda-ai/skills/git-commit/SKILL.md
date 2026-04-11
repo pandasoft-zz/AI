@@ -69,14 +69,14 @@ BREAKING CHANGE: <description>   ← only if breaking
 
 ## User action
 
-Show the proposed commit message, then use the `AskUserQuestion` tool to ask:
+Show the proposed commit message as markdown, then use the `AskUserQuestion` tool to ask:
 
 ```
 question: "What do you want to do with this commit?"
 header: "Action"
 options:
   - label: "Message only"
-    description: "Show commit message, do nothing"
+    description: "do nothing, ending here"
   - label: "Commit"
     description: "Run git add -A && git commit"
   - label: "Commit + push"
