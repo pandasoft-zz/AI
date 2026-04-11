@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/pandasoft-zz/AI/compare/v1.4.0...v1.4.1) (2026-04-11)
+
+
+### Bug Fixes
+
+* **orchestrator:** enforce mandatory code-review summary before Step 8 ([0eabbf1](https://github.com/pandasoft-zz/AI/commit/0eabbf1a8b46e2be728067a8d55970232f0c3e03))
+
 # [1.4.0](https://github.com/pandasoft-zz/AI/compare/v1.3.0...v1.4.0) (2026-04-11)
 
 

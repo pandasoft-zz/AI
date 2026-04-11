@@ -10,7 +10,7 @@
       "name": "panda-ai",
       "source": "./plugins/panda-ai",
       "description": "Multi-agent dev team: analyst creates issues, orchestrator plans, specialist devs code, tester and reviewer validate, docs-manager prepares PR. Communicates in Czech, code in English A2.",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "author": {
         "name": "pandasoft-zz"
       },
