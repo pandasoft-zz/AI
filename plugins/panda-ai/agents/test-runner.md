@@ -6,6 +6,7 @@ tools: Read, Write, Edit, Bash, Glob, Grep
 maxTurns: 50
 skills:
   - language-policy
+  - verification-before-completion
 ---
 
 # Test Runner
@@ -109,6 +110,29 @@ Testy SELHALY po 3 pokusech.
 - Co jsem zkoušel: [list]
 - Potřebuji pomoc s: [specific problem]
 ```
+
+## Testing Anti-Patterns
+
+Avoid these common mistakes when writing or changing tests (applies to all languages):
+
+### Testing mock behavior instead of real behavior
+❌ Asserting that a mock object exists or was called — you're testing the mock, not the code.  
+✅ Assert on the real observable outcome: return value, state change, side effect.
+
+### Test-only methods in production classes
+❌ Adding `destroy()`, `reset()`, `cleanup()` to production types just because tests need them.  
+✅ Put test cleanup in test helper functions/files — keep production types clean.
+
+### Mocking without understanding dependencies
+Before mocking any function or method, ask:
+- What side effects does the real implementation have?
+- Does this test depend on any of those side effects?
+
+Mocking a function that writes state your test depends on = test passes for the wrong reason.
+
+### Incomplete mocks
+Mock the **complete** data structure the real API returns — not just fields you think you need.
+Downstream code may depend on fields you omitted, causing silent failures in integration.
 
 ## Test standards
 - Each test has one clear assertion

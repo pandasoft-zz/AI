@@ -6,6 +6,7 @@ tools: Read, Write, Edit, Bash, Glob, Grep
 maxTurns: 40
 skills:
   - language-policy
+  - systematic-debugging
 isolation: worktree
 ---
 

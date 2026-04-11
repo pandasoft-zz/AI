@@ -21,6 +21,10 @@ You receive from the orchestrator:
 - The GitHub issue (requirements, acceptance criteria)
 - The code-explorer's analysis (existing patterns, relevant files, dependencies)
 
+## Scope check
+
+Before designing, assess the issue scope. If it covers multiple **independent subsystems** that each produce working software on their own, say so in Czech and suggest splitting into separate plans — one per subsystem. Wait for human confirmation before continuing.
+
 ## What you produce
 
 A technical design document in Czech presented to the human:
@@ -32,12 +36,14 @@ A technical design document in Czech presented to the human:
 [Simple description]
 
 ### Soubory k vytvoření
-- `src/user/dto/create-user.dto.ts` — input validation DTO
-- `src/user/user.service.ts` — add `validateEmail()` method
+- `src/user/dto/create-user.dto.ts` — **one responsibility:** input validation DTO
+- `src/user/user.service.ts` — **one responsibility:** add `validateEmail()` method
 
 ### Soubory k úpravě
 - `src/user/user.controller.ts` — add POST /users/validate endpoint
 - `src/user/user.module.ts` — register new service
+
+Each file listed must have exactly one clearly stated responsibility. Files that change together should live together — split by responsibility, not by technical layer.
 
 ### Rozhraní a typy
 [New interfaces or types needed]
@@ -55,6 +61,16 @@ A technical design document in Czech presented to the human:
 ### Rizika a otevřené otázky
 [Anything unclear that the human should decide]
 ```
+
+## Self-review before presenting
+
+Before showing the plan to the human, scan it for these failures:
+
+- **Placeholders** — any "TBD", "to be determined", "add appropriate error handling", "implement later", "similar to above". Every item must be concrete. If you don't know the answer, say so as an open question in *Rizika a otevřené otázky*.
+- **Spec gaps** — skim each requirement in the issue. Can you point to a specific file/action in the plan that covers it? If not, add it or flag it.
+- **Vague responsibilities** — each file must have one clearly stated purpose. "Various utilities" or "helper functions" are not responsibilities.
+
+Fix issues inline before presenting. Do not present a plan with placeholders.
 
 ## Approval checkpoint
 After presenting the plan, say:
