@@ -68,15 +68,24 @@ Pass each agent: issue context, branch name, specific sub-task.
 - **Do not proceed to code-reviewer until all acceptance criteria pass**
 - Report results in Czech before continuing
 
-### Step 7 — Run code-reviewer
+### Step 7 — Run code-reviewer (max 3 cycles)
 - After tests pass and acceptance criteria verified
-- code-reviewer handles its own review loop (max 3 cycles)
-- If code-reviewer reports failure after 3 cycles → **stop, report to human in Czech**
+- code-reviewer only diagnoses — it does NOT fix code
 
-**MANDATORY** — after code-reviewer finishes (pass or fail), you MUST present in Czech before moving to Step 8:
-- **Akceptační kritéria** (acceptance criteria from the issue) — one by one, with ✅/❌ status
-- **Co bylo zkontrolováno** — a short bullet list of what the code-reviewer checked (security, logic, test coverage, infrastructure, etc.) — use the reviewer's report
-- Any remaining warnings or suggestions the reviewer flagged (even if below fix threshold)
+**Review-fix loop (you manage this, max 3 cycles):**
+1. Spawn `code-reviewer` — it returns a `## Code Review Report`
+2. If the report is missing or incomplete → ask code-reviewer to re-emit the full report before continuing
+3. If the report contains issues scored ≥ 75:
+   - Spawn the appropriate developer agent with the exact list of issues (file, line, description)
+   - After the developer agent finishes → re-run test-runner, then go back to step 1
+4. After 3 cycles with issues ≥ 75 still present → **stop, report to human in Czech**
+
+**MANDATORY** — after the review loop ends (pass or fail), present the following in Czech before moving to Step 8:
+- **Výsledek code review** — prošel ✅ nebo selhal ❌
+- **Akceptační kritéria** (from the issue) — one by one, with ✅/❌ status
+- **Co bylo zkontrolováno** — bullet list of categories the reviewer checked (from the report)
+- **Nalezené problémy** — every finding the reviewer listed, including filtered-out suggestions (skóre < 75)
+- Any remaining warnings or suggestions the reviewer flagged
 
 Do NOT skip this presentation. Do NOT proceed to Step 8 until it is shown to the human.
 

@@ -84,12 +84,12 @@ After running:
 
 If the project already has a higher threshold configured (e.g. 90%), respect that instead.
 
-### Step 6 — Fix loop (max 3 cycles)
-If tests fail or coverage is below 80%:
-1. Read the error or coverage gap carefully
-2. Fix the test OR the source code (whichever is wrong), or add missing tests
-3. Run tests again
-4. After **3 cycles without success** → stop and report
+### Step 6 — Report failures to orchestrator, do NOT fix source code
+If tests fail:
+1. Read the error carefully — identify whether the problem is in the **test** or in the **source code**
+2. If the problem is in the **test** (wrong assertion, wrong setup) → fix the test and re-run
+3. If the problem is in the **source code** → do NOT touch it. Report the failure to the orchestrator and stop.
+4. After **3 test-side fix cycles without success** → stop and report
 
 ### Step 7 — Report to orchestrator in Czech
 

@@ -48,32 +48,44 @@ Give each finding a confidence score using this rubric (apply this rubric verbat
 **Only proceed with issues scored ≥ 75.**
 Discard everything below 75 — do not report it, do not act on it.
 
-### Step 5 — Fix loop (max 3 cycles)
-For remaining issues (score ≥ 75):
-1. Fix them directly
-2. Re-score the fix (should reach ≥ 75 as "resolved")
-3. After **3 cycles without clearing all ≥ 75 issues** → stop
+### Step 5 — Report findings to orchestrator
+You do NOT fix code. You do NOT spawn developer agents.
+Your job ends here — produce the report in Step 6 and let the orchestrator decide what to do.
 
 ### Step 6 — Report to orchestrator in Czech
 
+**This step is MANDATORY. You MUST output this report before finishing — even if review passed with no issues.**
+
 **If review passes (no issues ≥ 75 remaining):**
 ```
-Code review prošel.
-- Zkontrolováno souborů: X
-- Zkontrolované kategorie: [security, logika, kvalita kódu, test coverage, infrastruktura — uveď jen ty, které jsi skutečně zkontroloval]
-- Nalezené problémy: X celkem, Y odfiltrováno (skóre < 75), Z opraveno
-- Suggestions (skóre 50, neopraveno): [list each briefly, or "žádné"]
-- Kód je připraven k mergi
+## Code Review Report
+
+**Výsledek:** ✅ Prošel
+
+- **Zkontrolováno souborů:** X (seznam)
+- **Zkontrolované kategorie:** [security, logika, kvalita kódu, test coverage, infrastruktura — uveď jen ty, které jsi skutečně zkontroloval]
+- **Nalezené problémy celkem:** X
+  - Odfiltrováno (skóre < 75): Y
+  - Opraveno (skóre ≥ 75): Z
+- **Suggestions (skóre 50, neopraveno):**
+  - [file:line — popis] nebo "žádné"
+- **Kód je připraven k mergi.**
 ```
 
 **If review fails after 3 cycles:**
 ```
-Code review SELHAL po 3 pokusech.
-- Zkontrolované kategorie: [list]
-- Zbývající problémy (skóre ≥ 75):
-  [list each with file, line, issue, score]
-- Co jsem zkoušel: [list]
-- Potřebuji tvoji pomoc
+## Code Review Report
+
+**Výsledek:** ❌ SELHAL po 3 pokusech
+
+- **Zkontrolované kategorie:** [list]
+- **Zbývající problémy (skóre ≥ 75):**
+  - [file:line — issue — skóre]
+- **Co bylo zkoušeno:**
+  - Cyklus 1: [co developer opravil]
+  - Cyklus 2: [co developer opravil]
+  - Cyklus 3: [co developer opravil]
+- **Potřebuji tvoji pomoc.**
 ```
 
 ## What you do NOT do
