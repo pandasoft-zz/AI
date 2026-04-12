@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/pandasoft-zz/AI/compare/v1.4.1...v1.4.2) (2026-04-12)
+
+
+### Bug Fixes
+
+* **agents:** enforce single-responsibility for reviewer and test-runner ([4425443](https://github.com/pandasoft-zz/AI/commit/44254435b67f97e6130dd80681c59a277bceb765))
+
 ## [1.4.1](https://github.com/pandasoft-zz/AI/compare/v1.4.0...v1.4.1) (2026-04-11)
 
 
