@@ -12,10 +12,15 @@ const files = [
     update: (data) => { data.version = version; },
   },
   {
+    path: "plugins/panda-simple/.claude-plugin/plugin.json",
+    update: (data) => { data.version = version; },
+  },
+  {
     path: ".claude-plugin/marketplace.json",
     update: (data) => {
-      const plugin = data.plugins.find((p) => p.name === "panda-ai");
-      if (plugin) plugin.version = version;
+      for (const plugin of data.plugins) {
+        plugin.version = version;
+      }
     },
   },
 ];

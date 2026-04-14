@@ -21,6 +21,22 @@
         "code-review",
         "czech"
       ]
+    },
+    {
+      "name": "panda-simple",
+      "source": "./plugins/panda-simple",
+      "description": "Lightweight 2-agent workflow: one developer agent handles explore, branch, implement, test and fix loop; one reviewer agent scores findings. Communicates in Czech, code in English A2.",
+      "version": "1.4.2",
+      "author": {
+        "name": "pandasoft-zz"
+      },
+      "keywords": [
+        "workflow",
+        "single-agent",
+        "simple",
+        "code-review",
+        "czech"
+      ]
     }
   ]
 }

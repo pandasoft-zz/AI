@@ -1,0 +1,29 @@
+{
+  "name": "panda-simple",
+  "description": "Lightweight single-agent development workflow. One developer agent handles the full cycle: explore, branch, implement, test, self-review, report. Agents communicate in Czech. Code, comments, and docs in English A2.",
+  "version": "1.4.2",
+  "license": "MIT",
+  "author": {
+    "name": "pandasoft-zz",
+    "url": "https://github.com/pandasoft-zz"
+  },
+  "repository": "https://github.com/pandasoft-zz/AI",
+  "homepage": "https://github.com/pandasoft-zz/AI#readme",
+  "keywords": [
+    "workflow",
+    "single-agent",
+    "simple",
+    "czech"
+  ],
+  "components": {
+    "agents": [
+      "agents/"
+    ],
+    "commands": [
+      "commands/"
+    ],
+    "skills": [
+      "skills/"
+    ]
+  }
+}
