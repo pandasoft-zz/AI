@@ -1,7 +1,7 @@
 {
   "name": "panda-ai",
   "description": "Multi-agent development team. Analyst prepares issues, orchestrator plans and coordinates, specialist devs implement, tester and reviewer validate, docs-manager prepares the PR. Agents communicate in Czech. Code, comments, and docs in English A2.",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "license": "MIT",
   "author": {
     "name": "pandasoft-zz",

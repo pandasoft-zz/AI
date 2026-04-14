@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/pandasoft-zz/AI/compare/v1.4.2...v1.5.0) (2026-04-14)
+
+
+### Features
+
+* add lightweight agent plugin with skills and plan ([33634a5](https://github.com/pandasoft-zz/AI/commit/33634a55ff4c90a274776da2d0b7892e59e13ac6))
+
 ## [1.4.2](https://github.com/pandasoft-zz/AI/compare/v1.4.1...v1.4.2) (2026-04-12)
 
 
